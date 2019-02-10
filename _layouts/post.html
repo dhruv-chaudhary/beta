@@ -14,7 +14,7 @@ layout: default
       <span><i class="far fa-user"></i>&nbsp;&nbsp;&nbsp;<span class="author-name">{{ page.author }}</span></span>
     </div>
     <div class="image-container">
-      <img src="/assets/images/{{ page.featured-image }}" class="featured-image">
+      <img src="{{site.baseurl}}/assets/images/{{ page.featured-image }}" class="featured-image">
     </div>
   </header>
   <div class="content-container">
@@ -59,7 +59,7 @@ layout: default
               <li>
                 <a href="{{ post.url }}">
                   <div class="image-container">
-                    <img src="/assets/images/{{ post.featured-image }}">
+                    <img src="{{site.baseurl}}/assets/images/{{ post.featured-image }}">
                   </div>
                   <div class="related-post-info">
                     <h4 class="related-post-title">{{ post.title }}</h4>
