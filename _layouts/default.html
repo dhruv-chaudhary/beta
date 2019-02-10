@@ -1,14 +1,36 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <title>{{ page.title }}</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/{{ page.layout }}.css">
+  <title>{{ page.title }}</title>
 </head>
 
 <body>
-    {% include nav.html %} {{ content }}
+  <header id="site-header">
+    <div class="wrapper">
+      {% include nav.html %}
+    </div>
+  </header>
+  <main>
+    <div class="wrapper">
+      {{ content }}
+    </div>
+  </main>
+  <footer>
+    <div class="wrapper">
+      <div class="copyright">
+        &copy; 2019, Dhruv Chaudhary
+      </div>
+      <div class="footer-menu">
+        <a href="/disclaimer">Disclaimer</a>
+      </div>
+    </div>
+  </footer>
 </body>
 
 </html>

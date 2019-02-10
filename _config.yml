@@ -1,7 +1,9 @@
 lsi: false
 safe: true
 sass:
-  style: compressed
+  sass_dir: _sass
+  # style: compressed
+  sourcemap: none
 incremental: false
 highlighter: rouge
 gist:
@@ -9,13 +11,12 @@ gist:
 kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
+permalink: /:slug
 defaults:
-  - scope:
+  -
+    scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
-  - scope:
-      path: ""
-    values:
-      layout: "default"
+      author: "dhruv"

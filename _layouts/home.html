@@ -1,0 +1,36 @@
+---
+layout: default
+---
+<div class="intro">
+  <div class="image-container">
+    <img src="/assets/images/profilepic.png">
+  </div>
+  <div class="text">
+    <h2>Hey there, Welcome to my blog!</h2>
+    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+      with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+  </div>
+</div>
+<div class="wrapper blogroll">
+  <ul>
+    {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">
+        <div class="image-container">
+          <img src="/assets/images/{{ post.featured-image }}">
+        </div>
+        <div class="info">
+          <h2>{{ post.title }}</h2>
+          <p>{{ post.excerpt }}</p>
+          <p class="date">
+            <i class="far fa-calendar-alt"></i>&nbsp;&nbsp;&nbsp;{{ post.date | date: "%B %d, %Y" }}
+            &nbsp;&nbsp;&nbsp;<i class="fas fa-tags"></i>{% for tag in post.tags %}
+            <span>{{ tag }}</span>
+            {% endfor %}
+          </p>
+        </div>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

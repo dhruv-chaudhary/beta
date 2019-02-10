@@ -1,7 +1,86 @@
 ---
 layout: default
 ---
-<h1>{{ page.title }}</h1>
-<p>{{ page.date | date_to_string }} - {{ page.author }}</p>
-
-{{ content }}
+<article>
+  <header>
+    <div class="info-container">
+      <h1>{{ page.title }}</h1>
+      <h3>{{ page.subtitle }}</h3>
+      {% if page.last-updated %}
+      <span><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;&nbsp;{{ page.last-updated | date: "%B %d, %Y" }}</span>
+      {% else %}
+      <span><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;&nbsp;{{ page.date | date: "%B %d, %Y" }}</span>
+      {% endif %}
+      <span><i class="far fa-user"></i>&nbsp;&nbsp;&nbsp;<span class="author-name">{{ page.author }}</span></span>
+    </div>
+    <div class="image-container">
+      <img src="/assets/images/{{ page.featured-image }}" class="featured-image">
+    </div>
+  </header>
+  <div class="content-container">
+    <section class="content">
+      {{ content }}
+    </section>
+    <section class="article-meta">
+      <div class="meta-container tags-container">
+        <span class="meta-title">Tags</span>
+        <ul>
+          {% for tag in page.tags %}
+          <li>
+            <a href="">{{ tag }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% if page.previous %}
+        <div class="meta-container">
+          <span class="meta-title">Previous Post</span>
+          <a href="{{ page.previous.url }}">{{ page.previous.title }}</a>
+        </div>
+      {% endif %}
+      {% if page.next %}
+        <div class="meta-container">
+            <span class="meta-title">Next Post</span>
+            <a href="{{ page.next.url }}">{{ page.next.title }}</a>
+        </div>
+      {% endif %}
+    </section>
+  <div>
+</article>
+<aside>
+  <section class="related-posts">
+    <ul>
+      {% assign show_related_section = false %}
+      {% assign count = 0 %}
+      {% for post in site.posts %}
+        {% if post.url != page.url %}
+          {% for tag in post.tags %}
+            {% if count < 3 and page.tags contains tag %}
+              <li>
+                <a href="{{ post.url }}">
+                  <div class="image-container">
+                    <img src="/assets/images/{{ post.featured-image }}">
+                  </div>
+                  <div class="related-post-info">
+                    <h4 class="related-post-title">{{ post.title }}</h4>
+                    {% if page.last-updated %}
+                      <span>{{ page.last-updated | date: "%B %d, %Y" }}</span>
+                    {% else %}
+                      <span>{{ page.date | date: "%B %d, %Y" }}</span>
+                    {% endif %}
+                  </div>
+                </a>
+                {% assign show_related_section = true %}
+                {% assign count = count | plus: 1 %}
+              </li>
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+    {% if show_related_section %}
+      <h3>Related Posts</h3>
+    {% endif %}
+  </section>
+</aside>
