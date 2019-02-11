@@ -3,7 +3,7 @@ layout: default
 ---
 <div class="intro">
   <div class="image-container">
-    <img src="{{site.baseurl}}/assets/images/profilepic.png">
+    <img src="{{ site.baseurl }}/assets/images/profilepic.png">
   </div>
   <div class="text">
     <h2>Hey there, Welcome to my blog!</h2>
@@ -15,9 +15,9 @@ layout: default
   <ul>
     {% for post in site.posts %}
     <li>
-      <a href="{{ post.url }}">
+      <a href="{{ site.baseurl }}{{ post.url }}">
         <div class="image-container">
-          <img src="{{site.baseurl}}/assets/images/{{ post.featured-image }}">
+          <img src="{{ site.baseurl }}/assets/images/{{ post.featured-image }}">
         </div>
         <div class="info">
           <h2>{{ post.title }}</h2>
