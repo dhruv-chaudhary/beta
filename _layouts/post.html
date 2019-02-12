@@ -20,8 +20,64 @@ layout: default
   <div class="content-container">
     <section class="content">
       {{ content }}
+      <section class="article-meta sm-show">
+        <div class="meta-container tags-container">
+          <span class="meta-title">Tags</span>
+          <ul>
+            {% for tag in page.tags %}
+            <li>
+              <a href="">{{ tag }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% if page.previous %}
+          <div class="meta-container">
+            <span class="meta-title">Previous Post</span>
+            <a href="{{ site.baseurl }}{{ page.previous.url }}">{{ page.previous.title }}</a>
+          </div>
+        {% endif %}
+        {% if page.next %}
+          <div class="meta-container">
+              <span class="meta-title">Next Post</span>
+              <a href="{{ site.baseurl }}{{ page.next.url }}">{{ page.next.title }}</a>
+          </div>
+        {% endif %}
+      </section>
+      <div class="comments-container">
+        {% assign num_comments = site.data.comments[page.slug] | size %}
+        <h3>Leave a comment &bull; <span>{{ num_comments }} comments</span></h3>
+        <div class="comment-form-container">
+          <form>
+            <textarea name="message" rows="8" cols="80"></textarea>
+            <input type="text" name="name" value="" placeholder="Name">
+            <input type="text" name="userid" value="" placeholder="email/@twitter/github">
+            <button type="button" name="submit">Submit</button>
+          </form>
+        </div>
+        {% if site.data.comments.[page.slug] %}
+          <ul class="comments">
+            {% for comment in site.data.comments.[page.slug] %}
+              <li>
+                <div class="image-container">
+                  <img src="{{ comment.avatar }}">
+                </div>
+                <div class="comment-body">
+                  <div class="comment-user">
+                    <span class="comment-name">{{ comment.name }}</span>&nbsp;&bull;&nbsp;
+                    <span class="comment-time">{{ comment.date | date: "%B, %d %Y" }}</span>
+                  </div>
+                  <div class="comment-text">
+                    {{ comment.text }}
+                  </div>
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
     </section>
-    <section class="article-meta">
+    <section class="article-meta sm-hide">
       <div class="meta-container tags-container">
         <span class="meta-title">Tags</span>
         <ul>

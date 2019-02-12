@@ -2,7 +2,7 @@ $site-header-height: 50px;
 
 #site-header {
   height: $site-header-height;
-  font-family: 'Karla', sans-serif;
+  font-family: $header-font-family;
   background: $site-header-background;
   overflow: hidden;
 }

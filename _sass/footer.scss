@@ -1,7 +1,7 @@
 footer {
   background: $site-header-background;
   height: auto;
-  font-family: 'Karla', sans-serif;
+  font-family: $header-font-family;
 
   .wrapper {
     display: flex;

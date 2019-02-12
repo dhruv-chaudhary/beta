@@ -1,5 +1,5 @@
 <nav>
-  <a href="" class="sm-hide" onclick="return toggleMenu()"><i class="fas fa-bars"></i></a>
+  <a href="" class="sm-show" onclick="return toggleMenu()"><i class="fas fa-bars"></i></a>
   <div class="main-menu">
     {% for item in site.data.nav %}
     <a href="{{ site.baseurl }}{{ item.link }}" {% if page.url==item.link %} class="current" {% endif %}>{{ item.name }}</a>
